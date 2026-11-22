@@ -1,82 +1,95 @@
-# SHARESCRIBE-IT
+# ShareScribe-It
 
-## Project Overview:
-Sharescribe it! Is a platform built with a goal to allow users to stop wasting money on subscriptions that are ‘seldom used but are also occasionally needed’, by sharing their subscriptions with users who have similar needs and hence splitting the bills to make their subscription costs more worth it!
-The application uses a simple SQL Query match of users having the same values under ‘subscriptions’ to match them together.
-The users are then prompted to purchase a shared subscription of users, that are already purchased, at a lower price.
-The price paid by shared users goes directly to the original subscriber thus reducing costs for all users involved in our platform.
-The subscription services have been broadly grouped into 5 domains – streaming, education, productivity, magazines and music.
+ShareScribe-It is a subscription-sharing platform designed to help people reduce the cost of subscriptions they use occasionally. It connects users with similar subscription interests so they can share eligible plans and split costs, making subscriptions more affordable while giving users access to a wider range of services and potential sharing partners.
 
-## Objectives:
- -Enable users to share common subscriptions that they wish to. 
- -Result in a decreased spending on subscriptions for our users.
- -Provide users with an increased range of choices other than their inner circles.
- -Provide subscription model companies more potential users by directing our users to their sites, when no share-able subscription is available.
+Subscriptions are organised into five categories: **Streaming, Education, Productivity, Magazines, and Music**.
 
-## Structure: 
- 
-SQL DATABASE         :  SUBSCRIPTIONAPP
-SQL TABLES USED    :    1. USERS
-                        2. USER_PREFERENCES
-                        3. SUBSCRIPTIONS
- 
-## HTML files: 1
- 
-index.html :   
-Log in/sign in page, prompts user to enter a username and a password which upon pressing enter is updated into a table ‘users’ in the ‘subscriptionapp’ database, along with an ID that will be used to uniquely identify the users  and perform search queries in later files.
- 
- 
-## CSS files: 6
- 
-register.css
-homepage.css
-profilepage.css
-payment.css
-app.css
-results.css
- 
- 
-## PHP files:  14
- 
-config.php : 
-      Config file containing server, user, password and database details. 
- 
-register.php : 
-      Facilitates adding the user credentials to a table ‘user’ in the ‘subscriptionapp’  
-      Database
- 
-signin.php :
-      Provides a sign in message if the username and password entered in index.html already exist in the database.
-      
-preferences.php :   
-      Requests users to select subscription categories out of the five that they                                                                                                                        are interested in and additionally their current subscription costs.
- 
-interests.php : 
-      Passes the values selected by user in preferences.php to a table ‘subscriptions’.
- 
-home_page.php : 
-      Displays the requisite subscriptions that the user is interested in which upon clicking takes them to listings.php. 
- 
-profilepage.php :  
-      Displays information about the current user along with an option to their interests and subscription preferences.
- 
-updatepreferences.php :  
-      Updates the users preferences to the ‘user_preferences’ table.
- 
-add_subscriptions.php :  
-      For users who have a subscription active currently, enables them to add the details of their subscription including the subscription service, cost, billing cycle, and the username and password for the said subscriptions.
- 
-add.php : 
-      Adds the subscription details if added by the user to the ‘subscriptions’ table.
- 
-listings.php :  
-      Displays the available subscriptions, subscribed to and willing to share by our users to other users to purchase. Also provides them access to official sites of the service if none are available to share.
- 
-payment.php :  
-      Displays a payment page with form validation for credit card details.   
- 
-processing.php :  
-      Follow up processing page for payment.php.
- 
-update_num_users  : 
-      Updates the column ‘num_users_sharing’ in the subscriptions table by one.
+## Features
+
+- **User accounts:** Register and sign in to manage a personal account.
+- **Preference matching:** Select subscription categories and record subscription preferences to find users with similar interests.
+- **Subscription listings:** Browse subscriptions that other users are willing to share.
+- **Share an existing subscription:** Add subscription details such as the service, cost, and billing cycle.
+- **Profile management:** View and update personal subscription preferences.
+- **Payment flow:** Includes a payment form and processing page.
+- **Provider links:** Visit a subscription provider's official website when no shareable listing is available.
+
+## Technology Stack
+
+- **Frontend:** HTML, CSS
+- **Backend:** PHP
+- **Database:** MySQL
+- **Matching approach:** SQL queries that match users based on their selected subscription interests
+
+## Database Structure
+
+The application uses the `subscriptionapp` database, with the following main tables:
+
+- `users` – stores user account information.
+- `user_preferences` – stores users' selected preferences.
+- `subscriptions` – stores subscription details and sharing information.
+
+## Project Structure
+
+```text
+sharescribe-it/
+├── css/          # Stylesheets for the application's pages
+├── images/       # Image assets
+├── php/          # PHP pages and backend logic
+├── index.html    # Login and registration entry page
+└── README.md
+```
+
+The PHP directory contains the application's account, preference, subscription-listing, profile, and payment workflows.
+
+## Getting Started
+
+### Prerequisites
+
+- A local PHP development environment (for example, XAMPP, WAMP, or MAMP).
+- MySQL.
+- A web browser.
+
+### Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Kavish718/sharescribe-it.git
+   ```
+
+2. Move the project folder into your local web server's document root (for example, `htdocs` when using XAMPP).
+
+3. Start the Apache and MySQL services.
+
+4. Create a MySQL database named `subscriptionapp`.
+
+5. Configure the database connection in `php/config.php` with your local MySQL host, username, password, and database name.
+
+6. If a database schema or seed script is available in your project materials, import it into `subscriptionapp` before using the application. The repository documentation identifies the `users`, `user_preferences`, and `subscriptions` tables.
+
+7. Open the application in your browser through your local server, for example:
+
+   ```text
+   http://localhost/sharescribe-it/
+   ```
+
+## How It Works
+
+1. A user creates an account or signs in.
+2. The user selects subscription categories and records their preferences.
+3. ShareScribe-It uses SQL queries to find users with matching subscription interests.
+4. Users can browse available shared subscriptions or add a subscription they are willing to share.
+5. When no suitable shared option is listed, users can follow a link to the service provider.
+
+## Subscription Categories
+
+- Streaming
+- Education
+- Productivity
+- Magazines
+- Music
+
+## Note
+
+This repository documents a prototype subscription-sharing application. Configure the database locally before running it, and use test data and a safe test environment when exploring the payment workflow. Do not store real payment-card details or share account credentials through the application.
